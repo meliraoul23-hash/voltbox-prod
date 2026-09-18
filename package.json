@@ -1,0 +1,49 @@
+{
+  "name": "voltbox",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "tsx lib/db/push.ts",
+    "db:seed": "tsx lib/db/seed.ts",
+    "db:reset": "rm -f dev.db && npm run db:push && npm run db:seed",
+    "import:csv": "tsx scripts/import-products.ts",
+    "export:csv": "tsx scripts/export-products.ts"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "bcryptjs": "2.4.3",
+    "better-sqlite3": "^11.10.0",
+    "clsx": "2.1.1",
+    "csv-parse": "5.5.6",
+    "csv-stringify": "6.5.1",
+    "drizzle-orm": "^0.33.0",
+    "next": "14.2.35",
+    "next-auth": "4.24.8",
+    "postgres": "^3.4.9",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "resend": "^6.28.1",
+    "server-only": "^0.0.1",
+    "stripe": "^22.6.2",
+    "zod": "3.23.8",
+    "zustand": "4.5.5"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "2.4.6",
+    "@types/better-sqlite3": "7.6.11",
+    "@types/node": "20.16.11",
+    "@types/react": "18.3.11",
+    "@types/react-dom": "18.3.0",
+    "autoprefixer": "10.4.20",
+    "drizzle-kit": "^0.24.2",
+    "postcss": "8.4.47",
+    "tailwindcss": "3.4.13",
+    "tsx": "4.19.1",
+    "typescript": "5.6.3"
+  }
+}
