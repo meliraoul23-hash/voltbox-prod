@@ -354,6 +354,7 @@ export default function ConfiguratorForm() {
             <div>
               <p className="label-eyebrow">6 — Livraison</p>
               <p className="mt-1 text-lg font-semibold text-ink">+{result.leadShipDays} j (Luxembourg)</p>
+            </div>
           </div>
 
           <ComplianceNotice />
