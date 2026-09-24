@@ -9,32 +9,32 @@ const config: Config = {
     extend: {
       colors: {
         ink: {
-          DEFAULT: "#14171A", // anthracite - texte principal / fonds sombres
-          900: "#0E1012",
-          800: "#181B1F",
-          700: "#22262B",
-          600: "#2E3339",
+          DEFAULT: "#0F2A43",
+          900: "#0A1D30",
+          800: "#0F2A43",
+          700: "#163C5C",
+          600: "#1D4E76",
         },
         steel: {
-          50: "#F4F5F6",
-          100: "#E7E9EB",
-          200: "#D2D6DA",
-          300: "#AFB6BD",
-          400: "#89919A",
-          500: "#6B7480", // gris technique de reference
-          600: "#545C66",
-          700: "#3F454C",
+          50: "#F5F7F9",
+          100: "#E8ECF0",
+          200: "#D3DAE1",
+          300: "#AFBBC6",
+          400: "#89969F",
+          500: "#66727C",
+          600: "#4E5960",
+          700: "#3A434A",
         },
         volt: {
-          DEFAULT: "#FF6A1A", // accent energie/electrique
-          50: "#FFF1E8",
-          100: "#FFE0CC",
-          400: "#FF8A47",
-          500: "#FF6A1A",
-          600: "#E85700",
-          700: "#C24700",
+          DEFAULT: "#0E8F4F",
+          50: "#EAF9F0",
+          100: "#CFF3DE",
+          400: "#2FB86B",
+          500: "#0E8F4F",
+          600: "#0B7A43",
+          700: "#086236",
         },
-        ok: "#16794F",
+        ok: "#0E8F4F",
         warn: "#B7791F",
       },
       fontFamily: {
