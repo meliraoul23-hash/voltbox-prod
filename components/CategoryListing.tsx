@@ -10,13 +10,15 @@ type Sort = "pertinence" | "prix-asc" | "prix-desc";
 export default function CategoryListing({
   products,
   subcategories,
+  initialQuery,
 }: {
   products: Product[];
   subcategories?: string[];
+  initialQuery?: string;
 }) {
   const [phase, setPhase] = useState<Phase>("tous");
   const [sort, setSort] = useState<Sort>("pertinence");
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(initialQuery ?? "");
 
   const filtered = useMemo(() => {
     let list = products;
@@ -24,7 +26,10 @@ export default function CategoryListing({
     if (query.trim()) {
       const q = query.trim().toLowerCase();
       list = list.filter(
-        (p) => p.name.toLowerCase().includes(q) || p.shortDescription.toLowerCase().includes(q)
+        (p) =>
+          p.name.toLowerCase().includes(q) ||
+          p.shortDescription.toLowerCase().includes(q) ||
+          p.internalRef.toLowerCase().includes(q)
       );
     }
     if (sort === "prix-asc") list = [...list].sort((a, b) => a.priceParticulierCents - b.priceParticulierCents);
