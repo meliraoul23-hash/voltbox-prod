@@ -6,13 +6,15 @@ import { centsToEuro } from "@/lib/format";
 import { useSession } from "next-auth/react";
 import { getApplicablePriceCents } from "@/lib/pricing";
 import { useCartStore } from "@/lib/cart-store";
+import { siteConfig } from "@/lib/site-config";
 import type { Product } from "@/lib/db/schema";
 
 export default function ProductCard({ product }: { product: Product }) {
   const { data: session } = useSession();
   const role = session?.user?.role;
   const discount = session?.user?.proDiscountPct ?? 0;
-  const priceCents = getApplicablePriceCents(product, role, discount);
+  const priceCentsTtc = getApplicablePriceCents(product, role, discount);
+  const priceCentsHt = Math.round(priceCentsTtc / (1 + siteConfig.vatRatePercent / 100));
   const addItem = useCartStore((s) => s.addItem);
 
   const available = product.stockQty > 0 && product.status === "ACTIVE";
@@ -45,35 +47,39 @@ export default function ProductCard({ product }: { product: Product }) {
             </span>
           )}
         </div>
-        <div className="mt-auto flex items-end justify-between pt-3">
-          <div>
-            <p className="font-mono text-lg font-semibold tabular text-ink">{centsToEuro(priceCents)}</p>
-            <p className={`text-xs ${available ? "text-ok" : "text-warn"}`}>
-              {available ? "En stock" : "Sur commande"}
-            </p>
-          </div>
-          <div className="flex gap-2">
-            <Link
-              href={`/produit/${product.slug}`}
-              className="focus-ring rounded-md border border-ink px-3 py-2 text-xs font-medium text-ink hover:bg-ink hover:text-white"
-            >
-              Voir
-            </Link>
-            <button
-              type="button"
-              onClick={() =>
-                addItem({
-                  productId: product.id,
-                  slug: product.slug,
-                  name: product.name,
-                  unitPriceCents: priceCents,
-                  image: (product.images as string[])[0],
-                })
-              }
-              className="focus-ring rounded-md bg-volt px-3 py-2 text-xs font-semibold text-white hover:bg-volt-600"
-            >
-              Ajouter
-            </button>
+        <div className="mt-auto pt-3">
+          <div className="flex items-end justify-between">
+            <div>
+              <p className="font-mono text-lg font-semibold tabular text-ink">{centsToEuro(priceCentsTtc)}</p>
+              <p className="text-[11px] text-steel-500">{centsToEuro(priceCentsHt)} HT</p>
+              <p className={`mt-0.5 flex items-center gap-1 text-xs font-medium ${available ? "text-ok" : "text-warn"}`}>
+                <span className={`h-1.5 w-1.5 rounded-full ${available ? "bg-ok" : "bg-warn"}`} />
+                {available ? "En stock" : "Sur commande"}
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <Link
+                href={`/produit/${product.slug}`}
+                className="focus-ring rounded-md border border-ink px-3 py-2 text-xs font-medium text-ink hover:bg-ink hover:text-white"
+              >
+                Voir
+              </Link>
+              <button
+                type="button"
+                onClick={() =>
+                  addItem({
+                    productId: product.id,
+                    slug: product.slug,
+                    name: product.name,
+                    unitPriceCents: priceCentsTtc,
+                    image: (product.images as string[])[0],
+                  })
+                }
+                className="focus-ring rounded-md bg-volt px-3 py-2 text-xs font-semibold text-white hover:bg-volt-600"
+              >
+                Ajouter
+              </button>
+            </div>
           </div>
         </div>
       </div>
