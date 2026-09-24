@@ -20,7 +20,7 @@ html {
 
 body {
   background: #ffffff;
-  color: #14171a;
+  color: #0f2a43;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -46,11 +46,11 @@ body {
   font-size: 0.7rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #ff6a1a;
+  color: #0e8f4f;
 }
 
 .focus-ring:focus-visible {
-  outline: 2px solid #ff6a1a;
+  outline: 2px solid #0e8f4f;
   outline-offset: 2px;
 }
 
