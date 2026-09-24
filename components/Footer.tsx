@@ -58,14 +58,25 @@ export default function Footer() {
         ))}
       </div>
       <div className="border-t border-ink-700">
-        <div className="container-wrap flex flex-col gap-2 py-6 text-xs text-steel-500 md:flex-row md:items-center md:justify-between">
+        <div className="container-wrap flex flex-col gap-3 py-6 text-xs text-steel-500 md:flex-row md:items-center md:justify-between">
           <p>
             {siteConfig.legalName} · {siteConfig.vatNumber} · {siteConfig.rcs}
           </p>
-          <p>
-            Site de démonstration — catalogue, prix et coordonnées à personnaliser avant mise en production.
-          </p>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-steel-500">Paiement sécurisé :</span>
+            {["Visa", "Mastercard", "Stripe"].map((m) => (
+              <span key={m} className="rounded border border-ink-700 px-2 py-1 font-mono text-[10px] text-steel-300">
+                {m}
+              </span>
+            ))}
+          </div>
         </div>
+        {siteConfig.isDemo && (
+          <div className="container-wrap pb-6 text-xs text-steel-500">
+            Catalogue de démonstration — références, caractéristiques et prix sont des exemples à confirmer avant
+            mise en production.
+          </div>
+        )}
       </div>
     </footer>
   );
