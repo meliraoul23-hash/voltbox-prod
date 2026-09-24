@@ -53,6 +53,23 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <section className="border-b border-steel-200 bg-steel-50 py-5">
+        <div className="container-wrap grid grid-cols-2 gap-4 text-sm text-steel-700 sm:grid-cols-4">
+          <div className="flex items-center gap-2">
+            <span className="text-volt">●</span> Précâblé &amp; contrôlé avant expédition
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-volt">●</span> Livraison Luxembourg &amp; Grande Région
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-volt">●</span> Paiement en ligne sécurisé
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-volt">●</span> Devis &amp; configuration sur mesure
+          </div>
+        </div>
+      </section>
+
       <section className="bg-ink py-10">
         <div className="container-wrap flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <p className="text-2xl font-bold leading-tight text-white sm:text-3xl">
