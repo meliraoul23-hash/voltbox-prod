@@ -89,7 +89,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
 
           <div className="mt-6 flex flex-col gap-2 text-sm">
             <Link href="/compte/telechargements" className="text-volt hover:underline">
-              Télécharger la fiche technique &amp; le schéma (espace installateur) →
+              Télécharger la fiche technique &amp; le schéma (espace client) →
             </Link>
             <Link href="/devis" className="text-volt hover:underline">
               Besoin d'une variante ? Demander un devis →
