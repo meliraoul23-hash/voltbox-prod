@@ -14,7 +14,7 @@ export default async function OrdersPage() {
 
   return (
     <div className="container-wrap py-10">
-      <p className="label-eyebrow">Espace installateur</p>
+      <p className="label-eyebrow">Mon compte</p>
       <h1 className="mt-2 text-2xl font-bold tracking-tight text-ink">Mes commandes</h1>
 
       {myOrders.length === 0 ? (
