@@ -41,6 +41,14 @@ function rowsFor(variant: Variant): number {
   }
 }
 
+// Une "variant" qui commence par ceci n'est pas un identifiant de schema
+// mais une vraie photo produit uploadee depuis l'admin (data URL base64) ou
+// une URL d'image classique : on l'affiche alors directement au lieu de
+// generer l'illustration SVG.
+function isRealPhoto(variant: Variant): boolean {
+  return variant.startsWith("data:image") || variant.startsWith("http://") || variant.startsWith("https://");
+}
+
 export default function PanelArt({
   variant = "panel-ac-tri",
   className,
@@ -48,6 +56,11 @@ export default function PanelArt({
   variant?: Variant;
   className?: string;
 }) {
+  if (isRealPhoto(variant)) {
+    // eslint-disable-next-line @next/next/no-img-element -- data URLs ne passent pas par next/image
+    return <img src={variant} alt="Photo du produit" className={className} style={{ objectFit: "cover" }} />;
+  }
+
   const { block, accent } = paletteFor(variant);
   const rows = rowsFor(variant);
   const showBattery = variant === "panel-batterie";
